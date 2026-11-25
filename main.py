@@ -16,11 +16,13 @@ ROAST = (
 
 
 def main() -> None:
+    if len(ROAST) > 200:
+        raise SystemExit(f"roast is {len(ROAST)} characters, over the 200 limit")
     out_dir = "/output"
     os.makedirs(out_dir, exist_ok=True)
     path = os.path.join(out_dir, "entry.txt")
     with open(path, "w", encoding="utf-8") as handle:
-        handle.write(ROAST)
+        handle.write(ROAST.strip())
     print(f"Wrote {len(ROAST)} characters to {path}")
 
 
